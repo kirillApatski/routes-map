@@ -1,22 +1,28 @@
 import { Layout, Space } from 'antd'
 
-import { Maps } from './components/maps/maps.tsx'
+import { useAppSelector } from './common/hooks/redux-hooks.ts'
+import { Spinner } from './components/app-spinner/app-slinner.tsx'
+import { Map } from './components/maps/map.tsx'
 import TableApp from './components/table/table.tsx'
+import { getLoading } from './redux/selectors/app-selectors.ts'
 import s from './styles/app.module.scss'
 
 export function App() {
   const { Content, Header, Footer, Sider } = Layout
+  const loadong = useAppSelector(getLoading)
 
   return (
-    <Space direction="vertical" style={{ width: '100%' }}>
+    <Space direction="vertical" className={s.space}>
       <Layout>
+        <Spinner spinning={loadong} />
+
         <Header className={s.header}>Maps Road</Header>
-        <Layout hasSider>
-          <Sider className={s.asdasd} width={700}>
+        <Layout className={s.layout} hasSider>
+          <Sider className={s.sider} width="40%">
             <TableApp />
           </Sider>
           <Content className={s.content}>
-            <Maps />
+            <Map />
           </Content>
         </Layout>
         <Footer className={s.footer}>&copy; maps road 2023</Footer>
