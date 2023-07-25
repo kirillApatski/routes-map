@@ -20,6 +20,8 @@ const TableApp: React.FC = () => {
 
   return (
     <Table
+      tableLayout="fixed"
+      size="small"
       bordered={true}
       scroll={{ x: 'max-content' }}
       columns={columns}
