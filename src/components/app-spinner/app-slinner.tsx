@@ -7,6 +7,6 @@ type SpinnerPropsType = {
 }
 export const Spinner: React.FC<SpinnerPropsType> = ({ spinning }) => (
   <Space size="large" className={s.container}>
-    <Spin spinning={spinning} tip="Loading" size="large" />
+    <Spin spinning={spinning} size="large" />
   </Space>
 )
