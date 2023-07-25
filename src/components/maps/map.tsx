@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, Polyline, Marker, Popup } from 'react-leaflet'
 
 import { mapZoom, polylineWeight } from '../../common/constants/constants.ts'
-import { calculateCenter } from '../../common/helpers/centre-route.ts'
+import { calculateCenter } from '../../common/helpers/centre-calculate-route.ts'
 import { reverceCoordinate } from '../../common/helpers/reverce-coordinate.ts'
 import { useAppSelector } from '../../common/hooks/redux-hooks.ts'
 import { getPolylineCoordinates } from '../../redux/selectors/polyline-selectors.ts'
