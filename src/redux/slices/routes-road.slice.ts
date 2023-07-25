@@ -1,41 +1,60 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-type InitialStateType = {
+export type RoutesDataType = {
   key: React.Key
   name: string
-  dotOne: number[]
-  dotTwo: number[]
-  dotThree: number[]
+  dotsName: string
+  dots: [number, number][]
+  isSelected: boolean
 }
 
-const initialState: InitialStateType[] = [
+const initialState: RoutesDataType[] = [
   {
     key: '1',
     name: 'Маршрут №1',
-    dotOne: [59.84660399, 30.29496392],
-    dotTwo: [59.82934196, 30.42423701],
-    dotThree: [59.83567701, 30.38064206],
+    dotsName: 'dotsOne',
+    dots: [
+      [59.84660399, 30.29496392],
+      [59.82934196, 30.42423701],
+      [59.83567701, 30.38064206],
+    ],
+    isSelected: true,
   },
   {
     key: '2',
     name: 'Маршрут №2',
-    dotOne: [59.82934196, 30.42423701],
-    dotTwo: [59.82761295, 30.41705607],
-    dotThree: [59.84660399, 30.29496392],
+    dotsName: 'dotsTwo',
+    dots: [
+      [59.82934196, 30.42423701],
+      [59.82761295, 30.41705607],
+      [59.84660399, 30.29496392],
+    ],
+    isSelected: false,
   },
   {
     key: '3',
     name: 'Маршрут №3',
-    dotOne: [59.83567701, 30.38064206],
-    dotTwo: [59.83660399, 30.29496492],
-    dotThree: [59.82761295, 30.41705607],
+    dotsName: 'dotsThree',
+    dots: [
+      [59.83567701, 30.38064206],
+      [59.83660399, 30.29496492],
+      [59.82761295, 30.41705607],
+    ],
+    isSelected: false,
   },
 ]
 
 const routesRoadSlice = createSlice({
   name: 'route-road',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedRow(state, actons) {
+      state.map(route =>
+        route.key === actons.payload ? (route.isSelected = true) : (route.isSelected = false)
+      )
+    },
+  },
 })
 
+export const { setSelectedRow } = routesRoadSlice.actions
 export const routesRoadReducer = routesRoadSlice.reducer

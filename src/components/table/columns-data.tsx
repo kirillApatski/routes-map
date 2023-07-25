@@ -1,8 +1,8 @@
-import {ColumnsType} from "antd/es/table";
-import {RoutesDataType} from "../../redux/slices/routes-road.slice.ts";
+import { ColumnsType } from 'antd/es/table'
 
+import { RoutesDataType } from '../../redux/slices/routes-road.slice.ts'
 
-const columns: ColumnsType<RoutesDataType> = [
+export const columns: ColumnsType<RoutesDataType> = [
   {
     title: 'Маршруты',
     dataIndex: 'name',
@@ -14,7 +14,7 @@ const columns: ColumnsType<RoutesDataType> = [
       return (
         <>
           <div>{record.dots[0][0]}</div>
-        <div>{record.dots[0][1]}</div>
+          <div>{record.dots[0][1]}</div>
         </>
       )
     },
@@ -26,7 +26,7 @@ const columns: ColumnsType<RoutesDataType> = [
       return (
         <>
           <div>{record.dots[1][0]}</div>
-        <div>{record.dots[1][1]}</div>
+          <div>{record.dots[1][1]}</div>
         </>
       )
     },
@@ -38,7 +38,7 @@ const columns: ColumnsType<RoutesDataType> = [
       return (
         <>
           <div>{record.dots[2][0]}</div>
-        <div>{record.dots[2][1]}</div>
+          <div>{record.dots[2][1]}</div>
         </>
       )
     },

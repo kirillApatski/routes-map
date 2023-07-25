@@ -1,47 +1,22 @@
-import { createAction, createSlice } from '@reduxjs/toolkit'
-import { takeEvery, put, call } from 'redux-saga/effects'
+import { createSlice } from '@reduxjs/toolkit'
 
-import { osrmApi } from '../../api/osrm-api.ts'
-
-export type InitialStateType = {
-  coordinates: Array<number[]> | []
+export type CoordinatesType = {
+  coordinates: [number, number][] | []
 }
 
-let initialState: InitialStateType = {
+const initialState: CoordinatesType = {
   coordinates: [],
-}
-
-export function* polylineWatcher() {
-  yield takeEvery(getCoordinates.type, getRouteRoad)
 }
 
 const coordinatesSlice = createSlice({
   name: 'coordinates',
   initialState: initialState,
   reducers: {
-    getPolyline(state, action) {
+    setСoordinates(state, action) {
       state.coordinates = action.payload
     },
   },
 })
 
-export const { getPolyline } = coordinatesSlice.actions
+export const { setСoordinates } = coordinatesSlice.actions
 export const coordinatesReducer = coordinatesSlice.reducer
-
-export function* getRouteRoad(params: any): any {
-  try {
-    const res = yield call(osrmApi.getOsrmRoutes, params.payload.params)
-
-    yield put(getPolyline(res.data.routes[0].geometry.coordinates))
-  } catch (error) {
-    // console.log(error)
-  }
-}
-
-export const getCoordinates = createAction('coordinates/getCoordinates', params => {
-  return {
-    payload: {
-      params,
-    },
-  }
-})
