@@ -1,14 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
-
 export type InitialStateType = {
-  status: RequestStatusType
+  loading: boolean
   error: string | null
 }
 
 const initialState: InitialStateType = {
-  status: 'idle',
+  loading: false,
   error: null,
 }
 
@@ -16,11 +14,11 @@ const appSlice = createSlice({
   name: 'app',
   initialState: initialState,
   reducers: {
-    setAppStatus(state, action: PayloadAction<{ status: RequestStatusType }>) {
-      state.status = action.payload.status
+    setAppLoading(state, action: PayloadAction<{ loading: boolean }>) {
+      state.loading = action.payload.loading
     },
   },
 })
 
-export const { setAppStatus } = appSlice.actions
+export const { setAppLoading } = appSlice.actions
 export const appReducer = appSlice.reducer
