@@ -42,37 +42,15 @@ const initialState: RoutesDataType[] = [
     ],
     isSelected: false,
   },
-  {
-    key: '4',
-    name: 'Маршрут Минск 1',
-    dotsName: 'dotsFour',
-    dots: [
-      [54.002627, 27.570563],
-      [53.908449, 27.547963],
-      [53.854809, 27.608903],
-    ],
-    isSelected: false,
-  },
-  {
-    key: '5',
-    name: 'Маршрут Минск 2',
-    dotsName: 'dotsFive',
-    dots: [
-      [53.854809, 27.608903],
-      [53.865499, 27.485564],
-      [53.908662, 27.431607],
-    ],
-    isSelected: false,
-  },
 ]
 
 const routesRoadSlice = createSlice({
   name: 'route-road',
   initialState,
   reducers: {
-    setSelectedRow(state, actons) {
+    setSelectedRow(state, actions) {
       state.map(route =>
-        route.key === actons.payload ? (route.isSelected = true) : (route.isSelected = false)
+        route.key === actions.payload ? (route.isSelected = true) : (route.isSelected = false)
       )
     },
   },
