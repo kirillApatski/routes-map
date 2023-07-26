@@ -7,3 +7,5 @@ export const getCoordinates = createAction('coordinates/getCoordinates', params 
     },
   }
 })
+
+export type GetCoordinatesType = ReturnType<typeof getCoordinates>
