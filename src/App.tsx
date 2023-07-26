@@ -1,7 +1,8 @@
 import { Layout, Space } from 'antd'
 
 import { useAppSelector } from './common/hooks/redux-hooks.ts'
-import { Spinner } from './components/app-spinner/app-slinner.tsx'
+import { Spinner } from './components/common/app-spinner/app-slinner.tsx'
+import { ErrorNotification } from './components/common/error-notification/error-notification.tsx'
 import { Map } from './components/maps/map.tsx'
 import TableApp from './components/table/table.tsx'
 import { getLoading } from './redux/selectors/app-selectors.ts'
@@ -13,6 +14,7 @@ export function App() {
 
   return (
     <Space direction="vertical" className={s.space}>
+      <ErrorNotification />
       <Layout>
         <Spinner spinning={loadong} />
 
