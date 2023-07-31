@@ -1,16 +1,19 @@
 import { FC } from 'react'
 
+import L, { FeatureGroup } from 'leaflet'
 import { useMap } from 'react-leaflet'
 
-import { mapZoomCenterRoute } from '../../common/constants/constants.ts'
-
 type Props = {
-  coordinates: [number, number]
+  coordinates: [number, number][]
 }
 export const CenterRoute: FC<Props> = ({ coordinates }) => {
   const map = useMap()
+  const group = new FeatureGroup()
 
-  map.setView(coordinates, mapZoomCenterRoute, { animate: true, duration: 0.5, noMoveStart: true })
+  coordinates.forEach((marker: [number, number]) => {
+    L.marker([marker[0], marker[1]]).addTo(group)
+  })
+  map.fitBounds(group.getBounds())
 
   return null
 }

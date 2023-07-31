@@ -10,6 +10,10 @@ import { getRouteRoad } from '../../redux/selectors/routes-road-selectors.ts'
 import { CenterRoute } from './centre-route.tsx'
 import s from './map.module.scss'
 
+export interface IChangeView {
+  markers: [number, number][]
+}
+
 export const Map = () => {
   const coordinates = useAppSelector(getPolylineCoordinates)
   const route = useAppSelector(getRouteRoad)
@@ -23,7 +27,7 @@ export const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <CenterRoute coordinates={centerRoute} />
+      <CenterRoute coordinates={route[0].dots} />
       <Polyline weight={polylineWeight} positions={position} />
       {position.length &&
         route[0].dots.map((point: [number, number], index: number) => {
