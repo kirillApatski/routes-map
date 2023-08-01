@@ -10,10 +10,6 @@ import { getRouteRoad } from '../../redux/selectors/routes-road-selectors.ts'
 import { CenterRoute } from './centre-route.tsx'
 import s from './map.module.scss'
 
-export interface IChangeView {
-  markers: [number, number][]
-}
-
 export const Map = () => {
   const coordinates = useAppSelector(getPolylineCoordinates)
   const route = useAppSelector(getRouteRoad)
@@ -32,7 +28,7 @@ export const Map = () => {
       {position.length &&
         route[0].dots.map((point: [number, number], index: number) => {
           return (
-            <Marker position={point} key={index}>
+            <Marker position={point} draggable={true} key={index}>
               <Popup>{point.toString()}</Popup>
             </Marker>
           )
